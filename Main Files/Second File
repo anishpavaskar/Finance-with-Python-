@@ -1,0 +1,38 @@
+#prints our first graph 
+
+
+
+import datetime as dt
+import matplotlib.pyplot as plt
+from matplotlib import style
+import pandas as pd
+import pandas_datareader.data as web
+
+
+#same as last file 
+style.use('ggplot')
+start = dt.datetime(2000,1,1)
+end = dt.datetime(2016,12,31)
+df = web.DataReader('TSLA', 'google', start, end)
+
+
+# makes a csv file with the data (essentially a spreadsheet)
+df.to_csv('TSLA.csv')
+
+
+df = pd.read_csv('tsla.csv', parse_dates=True, index_col=0)
+
+#plots csv
+
+df.plot()
+plt.show()
+
+#adjusts plot to change 
+df['Adj Close'].plot()
+plt.show()
+
+
+df[['High','Low']]
+
+
+
